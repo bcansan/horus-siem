@@ -1,0 +1,16 @@
+import { useEffect, useRef } from 'react'
+
+export function useRealtime(path: string, onMessage: (data: any) => void) {
+  const wsRef = useRef<WebSocket | null>(null)
+  useEffect(() => {
+    const urlBase = (import.meta as any).env?.VITE_WS_URL || (typeof window !== 'undefined' ? `${window.location.origin.replace('http', 'ws')}` : 'ws://localhost:8000')
+    const ws = new WebSocket(`${urlBase}${path}`)
+    wsRef.current = ws
+    ws.onmessage = (ev) => {
+      try { onMessage(JSON.parse(ev.data)) } catch { onMessage(ev.data) }
+    }
+    return () => { ws.close() }
+  }, [path, onMessage])
+}
+
+
