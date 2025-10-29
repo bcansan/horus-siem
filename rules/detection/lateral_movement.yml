@@ -1,0 +1,13 @@
+id: R002
+name: Possible Lateral Movement
+description: Autenticaciones remotas múltiples desde un mismo host en corto tiempo
+severity: medium
+match_all: false
+conditions:
+  event.category: authentication
+  threshold:
+    by: source.ip
+    count: 10
+    window_minutes: 5
+
+

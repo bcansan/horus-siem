@@ -1,0 +1,15 @@
+server:
+  url: http://localhost:8000
+  api_key: CHANGE_ME_API_KEY
+
+agent:
+  interval_seconds: 30
+
+sources:
+  linux:
+    syslog: true
+    auth_log: true
+  windows:
+    sysmon: true
+
+

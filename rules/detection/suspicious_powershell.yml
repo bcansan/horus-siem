@@ -1,0 +1,13 @@
+id: R001
+name: Suspicious PowerShell Usage
+description: Detecta uso de PowerShell con flags sospechosas
+severity: high
+match_all: false
+conditions:
+  event.provider: "Microsoft-Windows-PowerShell"
+  message.contains_any:
+    - "-enc"
+    - "-nop"
+    - "-w hidden"
+
+

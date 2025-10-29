@@ -1,0 +1,9 @@
+name: Threat Intel Enrichment
+sources:
+  - type: url
+    url: https://example.com/threat-feed.txt
+fields:
+  - ip
+  - domain
+
+

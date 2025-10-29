@@ -1,0 +1,29 @@
+# General
+*.log
+*.tmp
+*.swp
+*.DS_Store
+node_modules/
+.dist/
+.build/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Docker
+nginx/ssl/
+
+# Env
+.env
+.env.local
+
+# Frontend
+frontend/build/
+frontend/dist/
+
+# Agent
+agent/dist/
+agent/build/
+agent/*.spec
