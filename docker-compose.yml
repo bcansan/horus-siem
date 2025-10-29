@@ -73,6 +73,24 @@ services:
     restart: unless-stopped
     command: celery -A workers.tasks worker --loglevel=info
 
+  celery-beat:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - POSTGRES_URL=postgresql://horus:horuspass@postgres:5432/horus
+      - REDIS_URL=redis://redis:6379/0
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - redis
+      - postgres
+    networks:
+      - horus-network
+    restart: unless-stopped
+    command: celery -A workers.agent_monitor beat -l info
+
   postgres:
     image: postgres:15-alpine
     environment:

@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { LayoutDashboard, Search, Bell, Settings, Book, Workflow } from 'lucide-react'
+import { LayoutDashboard, Search, Bell, Settings, Book, Workflow, Server, Shield } from 'lucide-react'
 
 const navItem = (
   to: string,
@@ -27,6 +27,8 @@ export default function Sidebar() {
         {navItem('/', 'Dashboard', LayoutDashboard)}
         {navItem('/search', 'Search', Search)}
         {navItem('/alerts', 'Alerts', Bell)}
+        {navItem('/agents', 'Agents', Server)}
+        {navItem('/threat-intel', 'Threat Intel', Shield)}
         {navItem('/rules', 'Rules', Workflow)}
         {navItem('/settings', 'Settings', Settings)}
         {navItem('/docs', 'Docs', Book)}

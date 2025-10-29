@@ -1,5 +1,6 @@
 import os
 from pydantic import BaseModel
+import psycopg2
 
 
 class Settings(BaseModel):
@@ -11,5 +12,9 @@ class Settings(BaseModel):
 
 
 settings = Settings()
+
+
+def get_db_connection():
+    return psycopg2.connect(settings.postgres_url)
 
 
