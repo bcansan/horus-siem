@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Server, AlertCircle, CheckCircle, XCircle, Clock } from 'lucide-react'
+import { Server, AlertCircle, CheckCircle, XCircle, Clock, Download } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 export const AgentsPage: React.FC = () => {
   const [agents, setAgents] = useState<any[]>([])
@@ -71,6 +72,10 @@ export const AgentsPage: React.FC = () => {
           <Server className="h-8 w-8" />
           Agents
         </h1>
+        <Link to="/agents/deploy" className="flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700">
+          <Download className="h-4 w-4" />
+          Deploy New Agent
+        </Link>
       </div>
 
       {stats && (
